@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import googleIcon from "../../assets/google.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { signInUser, setLoading, setUser, user, googleSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state || "/";
 
   console.log(user);
 
@@ -35,6 +38,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        navigate(from);
       })
       .catch((err) => {
         console.log(err);
