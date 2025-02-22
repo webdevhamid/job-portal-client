@@ -15,6 +15,11 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  // const [hydrated, setHydrated] = useState(false); // Track hydration
+
+  // useEffect(() => {
+  //   setHydrated(true); // Mark as hydrated after first render
+  // }, []);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -48,6 +53,11 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
+
+  // if (!hydrated) return null; // Prevent mismatched hydration issues
+  // if (loading) {
+  //   return <span className="loading loading-bars loading-lg"></span>;
+  // }
 
   const authInfo = {
     user,

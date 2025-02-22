@@ -3,6 +3,10 @@ import { Link, useLoaderData } from "react-router-dom";
 const JobDetails = () => {
   const { _id, title, description, company } = useLoaderData();
   console.log(_id);
+
+  const data = useLoaderData();
+  console.log(data);
+
   return (
     <div className="my-10">
       <div className="flex flex-col gap-3 text-center">
