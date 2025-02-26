@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const MyPostedJobs = () => {
   const { user } = useAuth();
@@ -12,6 +13,8 @@ const MyPostedJobs = () => {
         setJobs(data);
       });
   }, [user.email]);
+
+  console.log(jobs);
   return (
     <div>
       <h1 className="text-4xl text-center font-bold m-3">My Posted Jobs {jobs.length}</h1>
@@ -24,15 +27,24 @@ const MyPostedJobs = () => {
             <th>Job</th>
             <th>Status</th>
             <th>Total Applicant</th>
+            <th>Applications</th>
           </tr>
         </thead>
         <tbody>
           {jobs.map((job, index) => (
-            <tr>
+            <tr key={index}>
               <th>{index + 1}</th>
               <td>{job.title}</td>
               <td>Quality Control Specialist</td>
               <td>{job.status}</td>
+              <td>{job.totalApplicant ? job.totalApplicant : 0}</td>
+              <td>
+                <Link to={`/viewApplications/${job._id}`}>
+                  <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg">
+                    View Applications
+                  </button>
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

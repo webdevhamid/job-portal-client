@@ -42,7 +42,7 @@ const AddJob = () => {
       });
   };
   return (
-    <div>
+    <div className="w-[900px] mx-auto bg-slate-100 py-5">
       <h1 className="text-4xl text-center font-bold m-3">Add New Job</h1>
       <form className="card-body" onSubmit={handleFormData}>
         {/* Job Title */}
@@ -110,7 +110,7 @@ const AddJob = () => {
           </select>
         </div>
         {/* Application Deadline */}
-        <div className="form-control">
+        <div className="form-control w-48">
           <label className="label">
             <span className="label-text">Application Deadline</span>
           </label>
@@ -275,7 +275,7 @@ const AddJob = () => {
 
         {/* Submit Button */}
         <div className="form-control mt-6">
-          <button className="btn btn-primary" type="submit">
+          <button className="btn btn-neutral" type="submit">
             Create
           </button>
         </div>
