@@ -33,7 +33,7 @@ const AddJob = () => {
         console.log(data);
         if (data.insertedId) {
           Swal.fire({
-            title: "Good job!",
+            title: "Congratulations!",
             text: "You job has been added!",
             icon: "success",
           });

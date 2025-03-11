@@ -40,7 +40,7 @@ const JobApply = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "Congratulations!",
-            text: "You have successfully applied the job!",
+            text: "You have been successfully applied the job!",
             icon: "success",
           });
           navigate("/myApplications");

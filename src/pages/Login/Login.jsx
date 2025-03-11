@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import googleIcon from "../../assets/google.png";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const { signInUser, setLoading, setUser, user, googleSignIn } = useContext(AuthContext);
@@ -24,9 +25,17 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         const user = result.user;
+        const userEmail = result.user.email;
+        console.log({ userEmail });
         setUser(user);
         setLoading(false);
         console.log(user);
+
+        axios
+          .post(`http://localhost:3000/jwt`, { email: userEmail }, { withCredentials: true })
+          .then((res) => {
+            console.log(res.data);
+          });
       })
       .catch((err) => {
         console.log(err);
